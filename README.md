@@ -11,6 +11,8 @@ USE ROLE SECURITYADMIN;
 CREATE ROLE IF NOT EXISTS cortex_user_role;
 GRANT DATABASE ROLE SNOWFLAKE.CORTEX_USER TO ROLE cortex_user_role;
 
+GRANT ROLE cortex_user_role TO ROLE SYSADMIN;
+
 set c_user = (select CURRENT_USER());
 
 set grant_statement = 'GRANT ROLE cortex_user_role TO USER ' || $c_user || ';';
